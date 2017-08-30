@@ -141,7 +141,8 @@ for counter, groups in enumerate(pdas_allfiles):
         temp_ave['int'] = temp_ave['int'] - water_file_pd['int']
         temp_ave['err'] = (temp_ave['err']**2+water_file_pd['err']**2)**(1/2)
     
-    if want_to_plot == 'Y': plt.plot(temp_ave['q'],temp_ave['int'])
+    if want_to_plot == 'Y':
+        plt.errorbar(temp_ave['q'],temp_ave['int'], yerr=temp_ave['err'])
 
 if want_to_plot == 'Y':
     plt.xscale('log')
