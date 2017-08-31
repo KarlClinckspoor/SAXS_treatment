@@ -6,18 +6,20 @@ Created on Tue Aug 29 09:12:11 2017
 karl970@gmail.com karlclinckspoor@protonmail.com
 Made at iNANO at Aarhus University
 In a collaboration project with the University of Campinas.
-Last date of modification: 30/08/2017
+Last modified: 31/08/2017
 """
 
 import glob
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
 #==============================================================================
 # Todo:
 #       Deal with experiments with different lengths
 #		Check the precise number to obtain the necessary error bar (n or n-1?)
+#		Use timestamps to obtain the spacing between each curve
 #==============================================================================
     
 #%%
@@ -33,20 +35,29 @@ while True:
     expnumber = input("What is the experimental number of run number %d?\n(quit to end program, enter nothing to continue): " % (count)) 
     if expnumber == '':
         break
-    if expnumber.lower == 'quit':
-        quit()
-    if not expnumber.isdecimal:
+    if expnumber.lower() == 'quit':
+        sys.exit()
+    if not expnumber.isdecimal():
         print('invalid experiment number: ', expnumber)
         continue
     expnumber = expnumber.zfill(5)
     if expnumber in experiments:
         print('You already selected this experiment!')
         continue
-    experiments.append(expnumber)
+
     
     length = len(glob.glob('*%s*'%expnumber))
     experiment_lengths.append(length)
     print('Found',length,'files for that experiment.')
+    if length == 0:
+        print ('Oops. No experiment found. Do you want to select another? If not, the program will quit.')
+        do_select = input ('Y/n: ')
+        if do_select == 'Y':
+            continue
+        elif do_select != 'Y':
+            sys.exit()
+    
+    experiments.append(expnumber)
     count += 1
 
 for item in experiment_lengths:
@@ -56,7 +67,7 @@ if not all_same_lengths:
     print('Warning, Not all experiments have the same length!')
     do_quit = input('Do you want to quit? (Y/n) ')
     if do_quit == 'Y':
-        quit()
+        sys.exit()
 else:
     print('Good, all seem to be the same length.')
     
