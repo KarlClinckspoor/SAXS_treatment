@@ -134,7 +134,7 @@ if subtract_water == 'Y':
 
     elif len(water_file_name) == 1:
         water_file_pd = pd.read_table(water_file_name[0],names=['q','int','err'],dtype=np.float64, header=0)
-        print('Successfully subtracted')
+        print('Successfully opened the file')
     
 #%%
 print('\n\n'+'-'*10+'Averaging'+'-'*10)
@@ -146,12 +146,11 @@ for counter, groups in enumerate(pdas_allfiles):
     temp_ave = groups[0][:]
     temp_ave['int'] = (sum(item['int'] for item in groups)/len(groups))
     temp_ave['err'] = ((sum(item['err']**2 for item in groups)/len(groups))**(1/2))
-    temp_ave.to_csv( (filename+'_'+str(counter+1).zfill(4)+'.csv'), sep='\t')
-    
     if subtract_water == 'Y':
         temp_ave['int'] = temp_ave['int'] - water_file_pd['int']
         temp_ave['err'] = (temp_ave['err']**2+water_file_pd['err']**2)**(1/2)
-    
+    temp_ave.to_csv( (filename+'_'+str(counter+1).zfill(4)+'.csv'), sep='\t')
+
     if want_to_plot == 'Y':
         plt.errorbar(temp_ave['q'],temp_ave['int'], yerr=temp_ave['err'])
 
