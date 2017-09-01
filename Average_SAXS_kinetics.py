@@ -149,7 +149,7 @@ for counter, groups in enumerate(pdas_allfiles):
     if subtract_water == 'Y':
         temp_ave['int'] = temp_ave['int'] - water_file_pd['int']
         temp_ave['err'] = (temp_ave['err']**2+water_file_pd['err']**2)**(1/2)
-    temp_ave.to_csv( (filename+'_'+str(counter+1).zfill(4)+'.csv'), sep='\t')
+    temp_ave.to_csv( (filename+'_'+str(counter+1).zfill(4)+'.csv'), sep='\t', index=False)
 
     if want_to_plot == 'Y':
         plt.errorbar(temp_ave['q'],temp_ave['int'], yerr=temp_ave['err'])
