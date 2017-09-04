@@ -92,8 +92,12 @@ pdas_allfiles = []
 for step in ordered_experiment:
     pda_group = []
     for experiment in step:
-        pda_group.append(pd.read_table(experiment,names=['q','int','err'],dtype=np.float64, header=0))
+        temp_table = pd.read_table(experiment, delimiter = ' ', names=['q','int','err','trash'],dtype=np.float64, header=0)
+        del(temp_table['trash'])
+        pda_group.append(temp_table)
     pdas_allfiles.append(pda_group)
+
+#Had to add this trash column because the subtracted data has ' \n' as a terminator, and pandas doesn't like that. Instead of trying to fix the data, I just circumvented it with this application.
 
 #%%
 
@@ -149,7 +153,7 @@ for counter, groups in enumerate(pdas_allfiles):
     if subtract_water == 'Y':
         temp_ave['int'] = temp_ave['int'] - water_file_pd['int']
         temp_ave['err'] = (temp_ave['err']**2+water_file_pd['err']**2)**(1/2)
-    temp_ave.to_csv( (filename+'_'+str(counter+1).zfill(4)+'.csv'), sep='\t', index=False)
+    temp_ave.to_csv( (filename+'_'+str(counter+1).zfill(4)+'.csv'), sep=' ', index=False)
 
     if want_to_plot == 'Y':
         plt.errorbar(temp_ave['q'],temp_ave['int'], yerr=temp_ave['err'])

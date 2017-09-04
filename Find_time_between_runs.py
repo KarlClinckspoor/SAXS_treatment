@@ -6,9 +6,13 @@ Created on Thu Aug 31 09:57:40 2017
 karl970@gmail.com karlclinckspoor@protonmail.com
 Made at iNANO at Aarhus University
 In a collaboration project with the University of Campinas.
-Last modified: 31/08/2017
+Last modified: 04/09/2017
 """
 
+
+#==============================================================================
+#     The time calculations are wrong! Need to redo the section. One must consider that the time when the measurement is complete is the relevant time, and that is the sum of the deadtime with the live time.
+#==============================================================================
 
 import glob
 import sys
@@ -35,6 +39,7 @@ def FindAllTimes(do_change_times):
         print('Found',len(selected_experiments),'files for',expnumber)
         if initial_deadtime == 0:
             initial_deadtime = float(input('What is the initial deadtime? (in seconds)\n'))
+        live_time = float(input('What is the live time? (in seconds)\n'))
         elif initial_deadtime != 0 and do_change_times == 'Y':
             initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
         
