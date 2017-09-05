@@ -18,62 +18,7 @@ import glob
 import sys
 import re
 import matplotlib.pyplot as plt
-    
-#%%
-'''
-def FindAllTimes(do_change_times):
-    initial_frames = glob.glob('*_0001_var.dat')
-    if len(initial_frames) == '0':
-        print ('No experiments found.')
-        return
-    print(len(initial_frames), 'found')
-    initial_deadtime = 0
-    
-    for experiment in initial_frames:
-        #expnumber = re.findall('\d\d\d\d\d', experiment)[0]
-        trash1, trash2, expnumber, *trash3 = experiment.split('_')
-        del (trash1, trash2, trash3)
-        
-        expnumber = int(expnumber)
-        selected_experiments = glob.glob('*%s*.dat'%expnumber)
-        print('Found',len(selected_experiments),'files for',expnumber)
-        if initial_deadtime == 0:
-            initial_deadtime = float(input('What is the initial deadtime? (in seconds)\n'))
-        live_time = float(input('What is the live time? (in seconds)\n'))
-        
-        elif (initial_deadtime != 0 and do_change_times == 'Y'):
-            initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
-        
-        times = []
-        for item, file in enumerate(selected_experiments):
-           wholefile = open(file, 'r').read()
-           time = re.findall('time=\S+T\d\d:(\d\d):(\S+)\+', wholefile)
-           if len(time) == 0:
-               print('Something is wrong with file:', file)
-               break
-           minutes, seconds = float(time[0][0]), float(time[0][1])
-           if item == 0:
-               initial_minutes = minutes
-               initial_seconds = seconds
-           totalseconds = (minutes-initial_minutes)*60 + (seconds-initial_seconds) + initial_deadtime
-           #print (file, str(totalseconds) + 's')
-           times.append(totalseconds)
-        with open(str(expnumber)+'.tim', 'w') as fhand:
-            for time in times:
-                fhand.write(str(round(time,4)*1000)+'\n')
-            fhand.write(str(round(times[-1],4)*1000))
 
-        steps = []
-        item = 0
-        print ('----Times----')
-        for item, time in enumerate(times):
-            print ('Frame:',item+1, round(time*1000,4), 'ms')
-            if item != 0:
-                step = round(times[item]-times[item-1],4)
-                steps.append(step)
-                print('  Step = ', step)
-
-'''
 #%%
 def CalculateTimeDifferences (frames, dead1, dead_start, dead_factor, live, live_factor, mixing_time = 0):
     first_frame = dead1 + live - mixing_time
@@ -117,25 +62,14 @@ def FindTimesForEachExperiment(filelist, initial_deadtime, initial_livetime):
 def QuietFindTimes (expnumber, initial_deadtime, initial_livetime):
     pass
 
-#%%
-def FindTimes():
-    while True:
-        experiments = FindFiles()
-        if experiments is not None:
-            break
-        print('Retrying....')
-    
-    initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
-    initial_livetime = float(input('What is the initial livetime used for this experiment ? (in seconds)\n'))
-    
-    
-    times = FindTimesForEachExperiment(experiments, initial_deadtime, initial_livetime)
-    #calculated_times = CalculateTimeDifferences(len(experiments), )
-    print('---Times--- ')
+#%% This should be removed, a bit unnecessary. (exp, exp_times)
+def PrintTimes(experiment, times):
+    print('---Times for %s---'%experiment)
     for time in times:
         print(time,'ms')
+
 #%%
-def FindAndCompareTimes():
+def PrintAndCompareTimes():
     while True:
         experiments = FindFiles()
         if experiments is not None:
@@ -154,7 +88,21 @@ def FindAndCompareTimes():
         print(round(time,3)*1000, round(calc,3)*1000, round(time-calc,3)*1000)
 
 #%%
-#def WriteTimes (times, )
+def WriteTimes (expnumber, times):
+    with open (expnumber+'_tim.dat', 'w') as fhand:
+        for time in times:
+            fhand.write(str(round(time,4)*1000)+'\n')
+
+#%%
+def WriteTimesWithStep (expnumber, times):
+    with open(expnumber+'_tim.dat','w') as fhand:
+        for index, time in enumerate(times):
+            if index == len(times):
+                fhand.write(str(round(time,4)*1000)+'\n')
+                return
+            step = round(times[index+1] - time,4)*1000
+            fhand.write(str(round(time,4)*1000)+' '+step)
+
 #%%
 def FindFiles():
     expnumber = input("What is the experimental number of the run you wish to find the times between each curve? (1-5 digit number, or quit) \n")
@@ -172,7 +120,87 @@ def FindFiles():
             return None
         return experiments
     
+#%% To do
+
+def Help():
+    pass
+
+#%%
+def mainmenu():
+    print('This script is used to find the times between each experiment')
+    print('You can choose to do one by one, or do everything, automatically.')
+    print('What do you want to do? (C)alculate the times based on a set of parameters, find the times for (all) files in this folder, find the times for a few select experiments (default), (quit), or do you need (help)?')
+    choice = input('')
+    if choice == 'all':
+        do_write = input ('Do you want to write all the data to external files? (y)/n')
+        do_print = input ('Do you want to print all the times for each file? y/(n)')
+        if do_write != 'n':
+            do_step = input ('Do you want to write the steps on the textfile? y/(n)')
+        initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
+        initial_livetime = float(input('What is the initial livetime used for this experiment ? (in seconds)\n'))
+        all_files = glob.glob('*.dat')
+        expnumbers = []
+        for file in all_files:
+            expnumbers.append(file.split('_')[2])
+        for exp in expnumbers:
+            exp_files = glob.glob('*%s*' % exp) #ideally I would do this in the initial list, instead of reapplying glob, but this way is easier for now.
+            exp_times = FindTimesForEachExperiment(exp_files, initial_deadtime, initial_livetime)
+            if do_step != 'y':
+                WriteTimes(exp, exp_times)
+            if do_step == 'y':
+                WriteTimesWithStep(exp, exp_times)
+            if do_print == 'y':
+                PrintTimes(exp, exp_times)
+        print('Finished. Bye!')
+        return False
         
+    if choice == 'C':
+        frames = int(input('Number of frames: '))
+        dead1 = float(input('Dead1: '))
+        dead_start = float(input('Dead Start: '))
+        dead_factor = float(input('Dead factor: '))
+        live = float(input('Live time: '))
+        live_factor = float(input('Live factor: '))
+        times, times_sum = CalculateTimeDifferences(frames, dead1, dead_start, dead_factor, live, live_factor)
+        PrintCalculatedTimeFrames(times, times_sum)
+        return True
+    
+    if choice == 'help':
+        Help()
+        return True
+    
+    if choice == 'quit':
+        return False
+    
+    counter = 0
+    while True: #Finish ---------------------------------------------------
+        do_change_times = input('Are there different deadtimes for each experiment? If so, you will be prompted after every file what the new parameters are. Y/(n)\n')
+        do_write = input ('Do you want to write the data to external files? (y)/n')
+        do_print = input ('Do you want to print the times for each file? y/(n)')
+        if do_write != 'n':
+            do_step = input ('Do you want to write the steps on the textfile? y/(n)')
+        
+        experiments = FindFiles()
+        
+        if do_change_times == 'y':
+            initial_deadtime = input('What is the initial deadtime, in seconds? ')
+            initial_livetime = input('What is the initial livetimes, in seconds? ')
+            exp_times = FindTimesForEachExperiment(experiments, initial_deadtime, initial_livetime)
+        
+        if counter == 0:
+            initial_deadtime = input('What is the initial deadtime, in seconds? ')
+            initial_livetime = input('What is the initial livetimes, in seconds? ')
+            counter += 1
+        exp_times = FindTimesForEachExperiment(initial_deadtime, initial_livetime)
+        
+        
+        
+#%%
+if __name__ == '__main__':
+    continue_working = True
+    while continue_working:
+        continue_working = mainmenu()
+    print('Bye!')
 #%%
 def _FindTimes(): #Depecrated
     expnumber = input("What is the experimental number of the run you wish to find the times between each curve? (number, all or quit) \n")
@@ -231,25 +259,3 @@ def _FindTimes(): #Depecrated
     if do_graph == 'Y':
         plt.plot(times)
         plt.show()
-
-if __name__ == '__main__':
-    print('This script is used to find the times between each experiment')
-    print('You can choose to do one by one, or do everything, automatically.')
-    while True:
-        choice = input ('What do you want to do? (i)ndividual, (all), (quit)?\n')
-        if choice == 'i':
-            FindTimes()
-        elif choice == 'all':
-            '''
-            do_change = input('Will you want to change the deadtimes of the experiments? (Y/(n))\n')
-            FindAllTimes(do_change)
-            '''
-            print('In development!')
-        else:
-            sys.exit()    
-        do_continue = input('Do you want to continue? ((y)/n)')
-        if do_continue == 'n':
-            break
-        
-print('End')
-
