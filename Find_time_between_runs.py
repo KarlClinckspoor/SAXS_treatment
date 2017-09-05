@@ -20,7 +20,7 @@ import re
 import matplotlib.pyplot as plt
     
 #%%
-
+'''
 def FindAllTimes(do_change_times):
     initial_frames = glob.glob('*_0001_var.dat')
     if len(initial_frames) == '0':
@@ -40,7 +40,8 @@ def FindAllTimes(do_change_times):
         if initial_deadtime == 0:
             initial_deadtime = float(input('What is the initial deadtime? (in seconds)\n'))
         live_time = float(input('What is the live time? (in seconds)\n'))
-        elif initial_deadtime != 0 and do_change_times == 'Y':
+        
+        elif (initial_deadtime != 0 and do_change_times == 'Y'):
             initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
         
         times = []
@@ -61,7 +62,7 @@ def FindAllTimes(do_change_times):
             for time in times:
                 fhand.write(str(round(time,4)*1000)+'\n')
             fhand.write(str(round(times[-1],4)*1000))
-'''
+
         steps = []
         item = 0
         print ('----Times----')
@@ -71,9 +72,109 @@ def FindAllTimes(do_change_times):
                 step = round(times[item]-times[item-1],4)
                 steps.append(step)
                 print('  Step = ', step)
-'''
 
+'''
+#%%
+def CalculateTimeDifferences (frames, dead1, dead_start, dead_factor, live, live_factor, mixing_time = 0):
+    first_frame = dead1 + live - mixing_time
+    times = [first_frame]
+    times_sum = [first_frame]
+    for i in range(1,frames,1):
+        this_frame = dead_start*dead_factor**(i-1) + live*live_factor**(i-1)
+        times.append(this_frame)
+        times_sum.append(times_sum[i-1]+this_frame)
+    return times, times_sum
+
+#%%
+def PrintCalculatedTimeFrames (times, times_sum):
+    length = len(times)
+    space = ' '*5
+    for frame in range(1, length+1,1):
+        textblock1 = space + 'Frame %d:\n' % frame
+        textblock2 = space + 'Dead+Live time: '+ str(round(times[frame-1],3)*1000) +'ms\n'
+        textblock3 = space + 'Total exp. time: '+ str(round(times_sum[frame-1],3)*1000)+'ms\n'
+        print (textblock1, textblock2, textblock3)
+
+#%%
+def ExtractFromTimestamp(file):
+    wholefile = open(file,'r').read()
+    time = re.findall('q\[nm-1\]\stime=\d\d\d\d-\d\d-\d\dT\d\d:(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
+    minutes, seconds = float(time[0][0]), float(time[0][1])
+    return minutes, seconds
+
+#%%
+def FindTimesForEachExperiment(filelist, initial_deadtime, initial_livetime):
+    times = []
+    for item, file in enumerate(filelist):
+        if item == 0:
+            initial_minutes, initial_seconds = ExtractFromTimestamp(file)
+        minutes, seconds = ExtractFromTimestamp(file)
+        totalseconds = (minutes-initial_minutes)*60 + (seconds-initial_seconds) + initial_deadtime + initial_livetime
+        times.append(totalseconds)
+    return times
+
+#%%
+def QuietFindTimes (expnumber, initial_deadtime, initial_livetime):
+    pass
+
+#%%
 def FindTimes():
+    while True:
+        experiments = FindFiles()
+        if experiments is not None:
+            break
+        print('Retrying....')
+    
+    initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
+    initial_livetime = float(input('What is the initial livetime used for this experiment ? (in seconds)\n'))
+    
+    
+    times = FindTimesForEachExperiment(experiments, initial_deadtime, initial_livetime)
+    #calculated_times = CalculateTimeDifferences(len(experiments), )
+    print('---Times--- ')
+    for time in times:
+        print(time,'ms')
+#%%
+def FindAndCompareTimes():
+    while True:
+        experiments = FindFiles()
+        if experiments is not None:
+            break
+        print('Retrying....')
+    initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
+    dead_start = float(input('What is dead_start, the deadtime after the first one? (in seconds)\n'))
+    dead_factor = float(input('What is dead factor?\n'))
+    initial_livetime = float(input('What is the initial livetime used for this experiment ? (in seconds)\n'))
+    live_factor = float(input('What is the live factor?\n'))
+    
+    calculated_times, calculated_timesum = CalculateTimeDifferences(len(experiments), initial_deadtime,dead_start,dead_factor,initial_livetime,live_factor)
+    times = FindTimesForEachExperiment(experiments, initial_deadtime, initial_livetime)
+    print('---From timestamps --- Calculated --- Difference')
+    for time, calc in zip(times, calculated_timesum):
+        print(round(time,3)*1000, round(calc,3)*1000, round(time-calc,3)*1000)
+
+#%%
+#def WriteTimes (times, )
+#%%
+def FindFiles():
+    expnumber = input("What is the experimental number of the run you wish to find the times between each curve? (1-5 digit number, or quit) \n")
+    if expnumber.lower() == 'quit' or expnumber == '':
+        sys.exit()
+    if not expnumber.isdecimal() and expnumber != 'all':
+        print('invalid experiment number: ', expnumber)
+        return None
+    if expnumber.isdecimal():
+        expnumber = expnumber.zfill(5)
+        experiments = glob.glob('*%s*.dat'%expnumber) 
+        print('Found',len(experiments),'files for that experiment.')
+        if len(experiments) == 0:
+            print ('Oops. No experiment found.')
+            return None
+        return experiments
+    
+        
+#%%
+def _FindTimes(): #Depecrated
     expnumber = input("What is the experimental number of the run you wish to find the times between each curve? (number, all or quit) \n")
     #expnumber = '3607'
     
@@ -92,6 +193,7 @@ def FindTimes():
         return
     
     initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
+    initial_livetime = float(input('What is the initial livetime used for this experiment ? (in seconds)\n'))
     #initial_deadtime = 0.02
     
     times = []
@@ -99,12 +201,12 @@ def FindTimes():
     
     for item, file in enumerate(experiments):
        wholefile = open(file, 'r').read()
-       time = re.findall('time=\S+T\d\d:(\d\d):(\S+)\+', wholefile)
+       time = re.findall('q\[nm-1\]\stime=\d\d\d\d-\d\d-\d\dT\d\d:(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
        minutes, seconds = float(time[0][0]), float(time[0][1])
        if item == 0:
            initial_minutes = minutes
            initial_seconds = seconds
-       totalseconds = (minutes-initial_minutes)*60 + (seconds-initial_seconds) + initial_deadtime
+       totalseconds = (minutes-initial_minutes)*60 + (seconds-initial_seconds) + initial_deadtime + initial_livetime
        #print (file, str(totalseconds) + 's')
        times.append(totalseconds)
     

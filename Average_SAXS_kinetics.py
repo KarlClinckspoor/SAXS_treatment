@@ -17,9 +17,9 @@ import sys
 
 #==============================================================================
 # Todo:
-#       Deal with experiments with different lengths
-#		Check the precise number to obtain the necessary error bar (n or n-1?)
-#		Use timestamps to obtain the spacing between each curve
+#     Put this code as a function, then call it in order to improve modularity
+#     Separate the several parts of this program and ask behorehand if they
+#     should be ran, thus saving time.
 #==============================================================================
     
 #%%
