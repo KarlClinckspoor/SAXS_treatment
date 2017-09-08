@@ -6,18 +6,20 @@ Created on Thu Aug 31 09:57:40 2017
 karl970@gmail.com karlclinckspoor@protonmail.com
 Made at iNANO at Aarhus University
 In a collaboration project with the University of Campinas.
-Last modified: 04/09/2017
+Last modified: 06/09/2017
 """
 
+#==============================================================================
+# It is still necessary to check the best timing method, either by using 
+# half of the live time as that specific measurement as its real time.
+#==============================================================================
 
-#==============================================================================
-#     The time calculations are wrong! Need to redo the section. One must consider that the time when the measurement is complete is the relevant time, and that is the sum of the deadtime with the live time.
-#==============================================================================
 
 import glob
 import sys
 import re
 import matplotlib.pyplot as plt
+import textwrap
 
 #%%
 def CalculateTimeDifferences (frames, dead1, dead_start, dead_factor, live, live_factor, mixing_time = 0):
@@ -30,7 +32,7 @@ def CalculateTimeDifferences (frames, dead1, dead_start, dead_factor, live, live
         times_sum.append(times_sum[i-1]+this_frame)
     return times, times_sum
 
-#%%
+
 def PrintCalculatedTimeFrames (times, times_sum):
     length = len(times)
     space = ' '*5
@@ -40,10 +42,12 @@ def PrintCalculatedTimeFrames (times, times_sum):
         textblock3 = space + 'Total exp. time: '+ str(round(times_sum[frame-1],3)*1000)+'ms\n'
         print (textblock1, textblock2, textblock3)
 
-#%%
+
 def ExtractFromTimestamp(file):
     wholefile = open(file,'r').read()
-    time = re.findall('q\[nm-1\]\stime=\d\d\d\d-\d\d-\d\dT\d\d:(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
+    time = re.findall('q\[nm-1\]\s+time=\d\d\d\d-\d\d-\d\dT\d\d:(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
+    if len(time) == 0:
+        time = re.findall('.*(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
     minutes, seconds = float(time[0][0]), float(time[0][1])
     return minutes, seconds
 
@@ -89,23 +93,27 @@ def PrintAndCompareTimes():
 
 #%%
 def WriteTimes (expnumber, times):
-    with open (expnumber+'_tim.dat', 'w') as fhand:
+    with open (expnumber+'.txt', 'w') as fhand:
         for time in times:
             fhand.write(str(round(time,4)*1000)+'\n')
 
 #%%
 def WriteTimesWithStep (expnumber, times):
-    with open(expnumber+'_tim.dat','w') as fhand:
+    with open(expnumber+'.txt','w') as fhand:
         for index, time in enumerate(times):
             if index == len(times):
                 fhand.write(str(round(time,4)*1000)+'\n')
                 return
-            step = round(times[index+1] - time,4)*1000
-            fhand.write(str(round(time,4)*1000)+' '+step)
+            try:
+                step = round(times[index+1] - time,4)*1000
+            except:
+                step = 0
+            fhand.write(str(round(time,4)*1000)+' '+str(step)+'\n')
 
 #%%
 def FindFiles():
-    expnumber = input("What is the experimental number of the run you wish to find the times between each curve? (1-5 digit number, or quit) \n")
+    expnumber = input("What is the experimental number of the run you wish to find the times between each curve? "
+                      "(1-5 digit number, or quit) \n")
     if expnumber.lower() == 'quit' or expnumber == '':
         sys.exit()
     if not expnumber.isdecimal() and expnumber != 'all':
@@ -119,21 +127,36 @@ def FindFiles():
             print ('Oops. No experiment found.')
             return None
         return experiments
-    
-#%% To do
 
+
+# Todo
 def Help():
-    pass
+    text = 'This is a script made in order to automatically calculate the timing between each frame obtained from the ID02 SAXS line in ESRF, Grenoble. This is a pretty reduced scope for a project, but this code can easily be edited to suit another purpose.\n'
+    text2 = 'The formula to calculate the timing is this:\n'
+    text3 = 'Frame 1: dead1 + live\n'
+    text4 = 'Frame 2-end: previous frame + dead_start*dead_factor^(frame number -2) + live*live_factor^(frame number -2)\n'
+    helptext = textwrap.wrap((text+text2+text3+text4), width=70)
+    
+    print('-'*70)
+    for line in helptext:
+        print(line)
+    print('-'*70)
 
 #%%
 def mainmenu():
-    print('This script is used to find the times between each experiment')
-    print('You can choose to do one by one, or do everything, automatically.')
-    print('What do you want to do? (C)alculate the times based on a set of parameters, find the times for (all) files in this folder, find the times for a few select experiments (default), (quit), or do you need (help)?')
-    choice = input('')
+    print('##################################################################')
+    print('What do you want to do? (C)alculate the times based on a set of parameters, find the times for (all) files '
+          'in this folder, find the times for a few select experiments (default), (quit), or do you need (help)?')
+    print('##################################################################')
+    choice = input('Choice: ')
+
     if choice == 'all':
-        do_write = input ('Do you want to write all the data to external files? (y)/n')
-        do_print = input ('Do you want to print all the times for each file? y/(n)')
+        print('\nWARNING: Make sure that, before you continue, all the files in the present folder contain solely the '
+              'kinetic data, in the following naming convention: *_ExpNumber_FrameNumber_*.dat, for example: '
+              'sc1470_saxs_03316_0001_var.dat')
+        do_write = input ('Do you want to write all the data to external files? y/n:')
+        do_print = input ('Do you want to print all the times for each file? y/n:')
+        do_step = 'n'
         if do_write != 'n':
             do_step = input ('Do you want to write the steps on the textfile? y/(n)')
         initial_deadtime = float(input('What is the initial deadtime used for this experiment? (in seconds)\n'))
@@ -141,17 +164,20 @@ def mainmenu():
         all_files = glob.glob('*.dat')
         expnumbers = []
         for file in all_files:
-            expnumbers.append(file.split('_')[2])
+            expnumber = file.split('_')[2]
+            if expnumber not in expnumbers:
+                expnumbers.append(expnumber)
         for exp in expnumbers:
-            exp_files = glob.glob('*%s*' % exp) #ideally I would do this in the initial list, instead of reapplying glob, but this way is easier for now.
+            exp_files = glob.glob('*%s*' % exp)
+            # ideally I would do this in the initial list, instead of reapplying glob, but this way is easier for now.
             exp_times = FindTimesForEachExperiment(exp_files, initial_deadtime, initial_livetime)
-            if do_step != 'y':
+            if do_write == 'y' and do_step != 'y':
                 WriteTimes(exp, exp_times)
-            if do_step == 'y':
+            if do_write == 'y' and do_step == 'y':
                 WriteTimesWithStep(exp, exp_times)
             if do_print == 'y':
                 PrintTimes(exp, exp_times)
-        print('Finished. Bye!')
+        print('Finished.')
         return False
         
     if choice == 'C':
@@ -174,7 +200,8 @@ def mainmenu():
     
     counter = 0
     while True: #Finish ---------------------------------------------------
-        do_change_times = input('Are there different deadtimes for each experiment? If so, you will be prompted after every file what the new parameters are. Y/(n)\n')
+        do_change_times = input('Are there different deadtimes for each experiment? If so, you will be prompted after '
+                                'every file what the new parameters are. Y/(n)\n')
         do_write = input ('Do you want to write the data to external files? (y)/n')
         do_print = input ('Do you want to print the times for each file? y/(n)')
         if do_write != 'n':
@@ -197,13 +224,18 @@ def mainmenu():
         
 #%%
 if __name__ == '__main__':
+    print('This script is used to find the times between each experiment')
     continue_working = True
     while continue_working:
         continue_working = mainmenu()
     print('Bye!')
 #%%
-def _FindTimes(): #Depecrated
-    expnumber = input("What is the experimental number of the run you wish to find the times between each curve? (number, all or quit) \n")
+
+
+
+def FindTimes_(): #Depecrated
+    expnumber = input("What is the experimental number of the run you wish to find the times between each curve? "
+                      "(number, all or quit) \n")
     #expnumber = '3607'
     
     if expnumber.lower() == 'quit' or expnumber == '':
