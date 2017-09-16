@@ -16,6 +16,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
+# todo: Clean up the code. Many redundant parts.
+
 
 def subtract_water():
     experiments = []

@@ -239,7 +239,8 @@ def averageCurvesAndWrite(ordered_experiments_pd, subtract_water, water_file):
         if subtract_water == 'Y' and water_file != '':
             temp_ave['int'] = temp_ave['int'] - water_file['int']
             temp_ave['err'] = (temp_ave['err'] ** 2 + water_file['err'] ** 2) ** (1 / 2)
-        temp_ave.to_csv((filename + '_' + str(counter + 1).zfill(4) + '.csv'), sep=',', index=False)
+        temp_ave.to_csv((filename + '_' + str(counter + 1).zfill(4) + '.csv'), sep=' ', index=False)
+        # separator has to be a space to be compatible with SAXSutilities.
         averaged_curves.append(temp_ave)
     return averaged_curves
 
@@ -273,11 +274,11 @@ def mainmenu():
             do_subtract = 'n'
 
     averaged_curves = averageCurvesAndWrite(ordered_experiments_pda, do_subtract, water_file)
-    do_plot = input('Do you want to plot the averaged curves? Y/n')
+    do_plot = input('Do you want to plot the averaged curves? Y/n ')
     if do_plot == 'Y':
         plotCurves(averaged_curves)
 
-    do_continue = input('Do you want to continue? Y/n')
+    do_continue = input('Do you want to continue? Y/n ')
     if do_continue == 'Y':
         return True
     else:

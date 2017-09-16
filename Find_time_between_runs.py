@@ -55,7 +55,8 @@ def ExtractFromTimestamp(file):
     If the regex is unable to find the time, it will search again for something less specific.
     Returns the minutes and seconds, with milisseconds, as floats."""
     wholefile = open(file, 'r').read()
-    time = re.findall('q\[nm-1\]\s+time=\d\d\d\d-\d\d-\d\dT\d\d:(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
+    # time = re.findall('q\[nm-1\]\s+time=\d\d\d\d-\d\d-\d\dT\d\d:(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
+    time = re.findall('time=\d{4}-\d\d-\d\dT\d\d:(\d\d):(\d\d\.\d{5})', wholefile)
     if len(time) == 0:
         time = re.findall('.*(\d\d):(\d\d\.\d\d\d\d\d\d)', wholefile)
     minutes, seconds = float(time[0][0]), float(time[0][1])
