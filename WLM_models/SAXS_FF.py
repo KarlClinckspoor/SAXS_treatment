@@ -243,7 +243,7 @@ if __name__ == '__main__':
     eta = 0.01
 
     print(q, r_hs, eta, S_HS(q, r_hs, eta))
-    """
+    
     npoints = 50
     # qs = np.logspace(np.log10(5.11423033E-03), np.log10(0.254317015), num = npoints)
     qs = np.logspace(-2.29, -0.59, num=npoints)
@@ -298,7 +298,7 @@ if __name__ == '__main__':
     #    ints[i] = wormlike_chains(q, scale, d_head, rad_core, rho_rel, sigma, back, L, kuhn, eps, D_CQ, nu_rpa,
     #                              SC_pow, exponent)
     
-    """
+    
 
     """
     with open('SAXS_test.dat', 'r') as fhand:

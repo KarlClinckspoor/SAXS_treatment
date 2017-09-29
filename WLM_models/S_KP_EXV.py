@@ -237,6 +237,7 @@ def SI_new(x):
 # The builtin SI function does not correlate with the SI function used in the FORTRAN code. I tested some values
 # with the FORTRAN code, using gfortran to compile it, to check. Then, I translated the code into python, basically
 # keeping everything the same -- the syntaxes are relatively compatible.
+# Note: This should be because this SI function is integrated, while the np.sinc function is not. Trivial problem!
 def SI_weird(X):
     PI2 = 1.57079
     Z = abs(X)
