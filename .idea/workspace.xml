@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da88f261-b403-4900-8e8d-f40a5a726a87" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WLM_models/interactive_plot.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WLM_models/SAXS_FF.py" afterPath="$PROJECT_DIR$/WLM_models/SAXS_FF.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WLM_models/S_KP_EXV.py" afterPath="$PROJECT_DIR$/WLM_models/S_KP_EXV.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,77 +22,23 @@
       <file leaf-file-name="interactive_plot.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WLM_models/interactive_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="799">
               <caret line="47" column="31" lean-forward="false" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
               <folding>
+                <element signature="e#0#31#0" expanded="true" />
                 <marker date="1506710547581" expanded="true" signature="0:5" ph="import ..." />
-                <marker date="1506710547581" expanded="true" signature="1108:1194" ph="..." />
-                <marker date="1506710547581" expanded="true" signature="3841:4202" ph="..." />
-                <marker date="1506710547581" expanded="true" signature="4964:5291" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scratch_2.py" pinned="false" current-in-tab="true">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
+      <file leaf-file-name="interactive_fit.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WLM_models/interactive_fit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+            <state relative-caret-position="289">
+              <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SAXS_FF.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WLM_models/SAXS_FF.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
-              <folding>
-                <element signature="e#84#102#0" expanded="true" />
-                <marker date="1506706107697" expanded="true" signature="344:461" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="474:612" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="491:555" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="565:612" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="646:905" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="660:698" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="921:1060" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="1106:1245" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="1370:1938" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="1632:1916" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="1675:1853" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="1964:2002" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="2040:2268" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="2064:2134" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="2317:2411" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="2341:2411" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="2561:4067" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="2997:3558" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="3676:3742" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="4182:4422" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="4242:4406" ph="..." />
-                <marker date="1506706107697" expanded="false" signature="4510:6155" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="4516:4734" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="5193:5850" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="5295:5850" ph="..." />
-                <marker date="1506706107697" expanded="false" signature="6179:7111" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="6184:6334" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="6549:6767" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="6632:6751" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="6777:7060" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="6877:7044" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="7143:9442" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="7675:7823" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="7941:8126" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="8166:8354" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="8703:8897" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="8913:9442" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1506706107697" expanded="true" signature="9443:9481" ph="..." />
-                <marker date="1506706107697" expanded="true" signature="9482:9658" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1506706107697" expanded="true" signature="9706:11283" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,10 +86,11 @@
         <option value="$PROJECT_DIR$/SAXS_treatment/ploteverything.py" />
         <option value="$PROJECT_DIR$/SAXS_treatment/converting_files.py" />
         <option value="$PROJECT_DIR$/SAXS_treatment/converting_results.py" />
-        <option value="$PROJECT_DIR$/WLM_models/SAXS_FF.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
         <option value="$PROJECT_DIR$/WLM_models/interactive_plot.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
+        <option value="$PROJECT_DIR$/WLM_models/SAXS_FF.py" />
+        <option value="$PROJECT_DIR$/WLM_models/interactive_fit.py" />
       </list>
     </option>
   </component>
@@ -157,7 +101,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -170,7 +114,26 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SAXS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SAXS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SAXS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SAXS" type="462c0819:PsiDirectoryNode" />
+              <item name="WLM_models" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -292,17 +255,17 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1913767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24810892" sideWeight="0.46984127" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29425114" sideWeight="0.46445498" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2793651" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3270142" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2987897" sideWeight="0.53015876" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24810892" sideWeight="0.53554505" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -319,17 +282,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.46984127" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24810892" sideWeight="0.46445498" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2793651" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1913767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2987897" sideWeight="0.53015876" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24810892" sideWeight="0.53554505" order="3" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -347,34 +310,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Average_SAXS_kinetics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="15" lean-forward="false" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/converting_files.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/converting_results.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Find_time_between_runs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ploteverything.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -460,56 +395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WLM_models/SAXS_FF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
-          <folding>
-            <element signature="e#84#102#0" expanded="true" />
-            <marker date="1506706107697" expanded="true" signature="344:461" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="474:612" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="491:555" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="565:612" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="646:905" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="660:698" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="921:1060" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="1106:1245" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="1370:1938" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="1632:1916" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="1675:1853" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="1964:2002" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="2040:2268" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="2064:2134" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="2317:2411" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="2341:2411" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="2561:4067" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="2997:3558" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="3676:3742" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="4182:4422" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="4242:4406" ph="..." />
-            <marker date="1506706107697" expanded="false" signature="4510:6155" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="4516:4734" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="5193:5850" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="5295:5850" ph="..." />
-            <marker date="1506706107697" expanded="false" signature="6179:7111" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="6184:6334" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="6549:6767" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="6632:6751" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="6777:7060" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="6877:7044" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="7143:9442" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="7675:7823" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="7941:8126" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="8166:8354" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="8703:8897" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="8913:9442" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1506706107697" expanded="true" signature="9443:9481" ph="..." />
-            <marker date="1506706107697" expanded="true" signature="9482:9658" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1506706107697" expanded="true" signature="9706:11283" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
@@ -517,25 +402,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WLM_models/interactive_plot.py">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="47" column="31" lean-forward="false" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        <state relative-caret-position="17">
+          <caret line="4" column="27" lean-forward="false" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
           <folding>
-            <marker date="1506710547581" expanded="true" signature="0:5" ph="import ..." />
-            <marker date="1506710547581" expanded="true" signature="1108:1194" ph="..." />
-            <marker date="1506710547581" expanded="true" signature="3841:4202" ph="..." />
-            <marker date="1506710547581" expanded="true" signature="4964:5291" ph="..." />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
+    <entry file="file://$PROJECT_DIR$/WLM_models/SAXS_test.dat">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WLM_models/interactive_plot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="31" lean-forward="false" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1506710547581" expanded="true" signature="0:5" ph="import ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WLM_models/TTAB.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WLM_models/S_KP_EXV.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#144#5866#0" expanded="false" />
+            <element signature="e#5891#6348#0" expanded="false" />
+            <element signature="e#6463#6486#0" expanded="false" />
+            <element signature="e#6927#7908#0" expanded="false" />
+            <element signature="e#7939#11684#1" expanded="false" />
+            <element signature="e#11708#12258#1" expanded="false" />
+            <element signature="e#12275#14578#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WLM_models/SAXS_FF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="e#4516#6155#0" expanded="false" />
+            <element signature="e#6184#7111#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WLM_models/interactive_fit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
