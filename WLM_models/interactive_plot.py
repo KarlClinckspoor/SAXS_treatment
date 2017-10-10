@@ -125,5 +125,5 @@ def reset_button_on_clicked(mouse_event):
     exponent_slider.reset()
 
 reset_button.on_clicked(reset_button_on_clicked)
-
+#%%
 plt.show()
