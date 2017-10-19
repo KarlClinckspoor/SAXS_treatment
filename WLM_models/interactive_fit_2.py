@@ -6,14 +6,14 @@ from matplotlib.widgets import Slider, Button
 data_x = []
 data_y = []
 data_y_err = []
-with open(r'C:\Users\Karl\Dropbox\Python\SAXS\WLM_models\SAXS_test.dat', 'r') as fhand:
+with open(r'C:\Users\Karl\Dropbox\Python\SAXS\WLM_models\MG.txt', 'r') as fhand:
     counter = 0
     for line in fhand:
         try:
-            temp_x, temp_y, temp_err = line.rstrip().split(' ')
+            temp_x, temp_y = line.rstrip().split(' ')
             data_x.append(float(temp_x)/10)
             data_y.append(float(temp_y))
-            data_y_err.append(float(temp_err))
+            #data_y_err.append(float(temp_err))
         except:
             pass
             #print('Line invalid')
@@ -22,7 +22,7 @@ with open(r'C:\Users\Karl\Dropbox\Python\SAXS\WLM_models\SAXS_test.dat', 'r') as
 # plt.show()
 
 # Initial parameters.
-scale = 0.1440E+00  # 0.1
+scale = 1e+06  # 0.1
 d_head = 0.1929E+02  # 20
 rad_core = 0.8109E+01  # 8
 rho_rel = 0.5999E-01  # 0.06
@@ -45,11 +45,11 @@ ax.set_xscale('log')
 ax.set_yscale('log')
 ax.set_xlabel('q/Å')
 ax.set_ylabel('I(q)')
-qs = np.logspace(-2.5, -0.5)
+qs = np.logspace(-0.8, 0.6)
 Ints = WLM_whole_q(qs, scale, d_head, rad_core, rho_rel, sigma, back, L, kuhn, eps, D_CQ, nu_rpa, SC_pow, exponent)
 
 [line] = ax.plot(qs, Ints, linewidth=2, color='red')
-line2 = ax.errorbar(data_x, data_y, data_y_err)
+line2 = ax.plot(data_x, data_y)
 
 axis_color = 'lightgoldenrodyellow'
 
@@ -65,7 +65,7 @@ slider_width = 0.65
 # Slider(ax, label, valmin, valmax, valinit)
 
 scale_slider_ax = fig.add_axes([slider_left, slider_bottoms[0], slider_width, slider_height], facecolor=axis_color)
-scale_slider = Slider(scale_slider_ax, 'Scale', 0.01, 1, valinit=scale)
+scale_slider = Slider(scale_slider_ax, 'Scale', 1000, 100000000, valinit=scale)
 
 d_head_slider_ax = fig.add_axes([slider_left, slider_bottoms[1], slider_width, slider_height], facecolor=axis_color)
 d_head_slider = Slider(d_head_slider_ax, 'D_head', d_head / 10, d_head * 10, valinit=d_head)

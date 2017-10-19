@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from SAXS_FF import WLM_whole_q
 import matplotlib.pyplot as plt
 import numpy as np
@@ -128,7 +127,7 @@ def reset_button_on_clicked(mouse_event):
 reset_button.on_clicked(reset_button_on_clicked)
 #%%
 plt.show()
-=======
+"""
 from SAXS_FF import WLM_whole_q
 import matplotlib.pyplot as plt
 import numpy as np
@@ -258,4 +257,4 @@ def reset_button_on_clicked(mouse_event):
 reset_button.on_clicked(reset_button_on_clicked)
 #%%
 plt.show()
->>>>>>> c44b638e9b1b456f6420b32a842690de5490f94a
+"""

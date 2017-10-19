@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import numpy as np
 # This is a PEP8 mess, but it is like this to more easily correlate with the FORTRAN77 code.
 
@@ -586,7 +585,7 @@ C
       RETURN
       END
 """
-=======
+
 import numpy as np
 # This is a PEP8 mess, but it is like this to more easily correlate with the FORTRAN77 code.
 
@@ -1174,4 +1173,3 @@ C
       RETURN
       END
 """
->>>>>>> c44b638e9b1b456f6420b32a842690de5490f94a

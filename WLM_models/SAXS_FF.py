@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # -*- coding: utf-8 -*-
 """
 Created on Wed Sep  6 13:17:45 2017
@@ -411,7 +411,7 @@ c       FORMFX=SQ*(2.*BESSJ1(X(1)*RO)/(X(1)*RO))**2
        RETURN
        END IF
 """
-=======
+
 # -*- coding: utf-8 -*-
 """
 Created on Wed Sep  6 13:17:45 2017
@@ -824,4 +824,3 @@ c       FORMFX=SQ*(2.*BESSJ1(X(1)*RO)/(X(1)*RO))**2
        RETURN
        END IF
 """
->>>>>>> c44b638e9b1b456f6420b32a842690de5490f94a
