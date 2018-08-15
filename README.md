@@ -18,4 +18,4 @@ Please excuse the non-Pythonic code, it was my first real project.
 
 # WLM models
 
-This folder contains a few scripts that model Kratky-Porod core-shell structures with the PRISM model for intermicellar interactions. It also has a tool to plot this data and vary the parameters interactively, and also can compare the model to real data, and adjust the parameters accordingly.
+This folder contains a few scripts that model Kratky-Porod core-shell structures with the PRISM model for intermicellar interactions. It also has a tool to plot this data and vary the parameters interactively, and also can compare the model to real data, and adjust the parameters accordingly. At the moment, it has an unfinished fitting functionality. Will, perhaps, complete it some day.
