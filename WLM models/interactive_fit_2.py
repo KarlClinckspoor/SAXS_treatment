@@ -6,11 +6,11 @@ from matplotlib.widgets import Slider, Button
 data_x = []
 data_y = []
 data_y_err = []
-with open(r'C:\Users\Karl\Dropbox\Python\SAXS\WLM_models\MG.txt', 'r') as fhand:
+with open(r'D:\Dropbox\Python\SAXS\WLM_models\MG.txt', 'r') as fhand:
     counter = 0
     for line in fhand:
         try:
-            temp_x, temp_y = line.rstrip().split(' ')
+            temp_x, temp_y = line.rstrip().split('\t')
             data_x.append(float(temp_x)/10)
             data_y.append(float(temp_y))
             #data_y_err.append(float(temp_err))
@@ -27,13 +27,13 @@ d_head = 0.1929E+02  # 20
 rad_core = 0.8109E+01  # 8
 rho_rel = 0.5999E-01  # 0.06
 sigma = 0.1000E+01  # 1
-back = 0.0  # 0
-L = 0.5000E+04  # 5000
-kuhn = 0.1000E+04  # 1000
+back = 5000  # 0
+L = 880  # 5000
+kuhn = 195  # 1000
 eps = 0.1000E+01  # 1
-D_CQ = 0.1050E+03  # 105
-nu_rpa = 0.3846E+02  # 38
-SC_pow = 0.6757E-03  # 0.000
+D_CQ = 36  # 105
+nu_rpa = 66  # 38
+SC_pow = 4218219  # 0.000
 exponent = 4
 
 figure_bottom = 0.50
@@ -45,11 +45,12 @@ ax.set_xscale('log')
 ax.set_yscale('log')
 ax.set_xlabel('q/Å')
 ax.set_ylabel('I(q)')
-qs = np.logspace(-0.8, 0.6)
+qs = np.logspace(-1.8, -0.3)
 Ints = WLM_whole_q(qs, scale, d_head, rad_core, rho_rel, sigma, back, L, kuhn, eps, D_CQ, nu_rpa, SC_pow, exponent)
 
 [line] = ax.plot(qs, Ints, linewidth=2, color='red')
 line2 = ax.plot(data_x, data_y)
+ax.axis([0.01, 0.5, 500, 5E7])
 
 axis_color = 'lightgoldenrodyellow'
 
@@ -80,7 +81,7 @@ sigma_slider_ax = fig.add_axes([slider_left, slider_bottoms[4], slider_width, sl
 sigma_slider = Slider(sigma_slider_ax, 'sigma', sigma / 10, sigma * 10, valinit=sigma)
 
 back_slider_ax = fig.add_axes([slider_left, slider_bottoms[5], slider_width, slider_height], facecolor=axis_color)
-back_slider = Slider(back_slider_ax, 'back', 0, 0.01, valinit=back)
+back_slider = Slider(back_slider_ax, 'back', 5E3, 1E5, valinit=back)
 
 L_slider_ax = fig.add_axes([slider_left, slider_bottoms[6], slider_width, slider_height], facecolor=axis_color)
 L_slider = Slider(L_slider_ax, 'L', L / 10, L * 10, valinit=L)

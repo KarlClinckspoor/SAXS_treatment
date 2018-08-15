@@ -10,7 +10,7 @@ Last modified: 15/09/2017
 """
 
 import glob
-
+import sys
 
 def convert_file(list_contents, dest_filename, multiple=True):
     """Gets the file contents as a list and writes two dummy headers, the number of points and then closes the \
@@ -51,7 +51,7 @@ if __name__ == '__main__':
             for file in files:
                 newlist.write(' ' + file + '\n')
             newlist.close()
-            quit()
+            sys.exit()
 
         elif append == '2':
             oldlist = open('INPUT.LIS', 'r')  # todo: check for file missing
@@ -68,10 +68,10 @@ if __name__ == '__main__':
             for file in files:
                 newlist.write(' ' + file + '\n')
             newlist.close()
-            quit()
+            sys.exit()
         else:
             print('I did not understand.')
-            quit()
+            sys.exit()
 
     if choice == '2':
         fname = input('What is the file name of the file/series you want to convert? ')
@@ -79,7 +79,7 @@ if __name__ == '__main__':
             file = open(fname, 'r')
         except FileNotFoundError:
             print('File not found. Try again.')
-            quit()
+            sys.exit()
         content_list = list(line.rstrip() for line in file)[1:]  # Ignores the q int err line of the file.
         file.close()
         dest_filename = input('What will the destination filename be? No extension, it will be saved to .dat.' +
@@ -101,4 +101,3 @@ if __name__ == '__main__':
             print('Converted {} to {}'.format(file, dest_filename))
             counter += 1
     print('Done!')
-

@@ -28,7 +28,7 @@ columns_err_joined = ";".join(columns_err)
 for data in sepdata:
     temp_join = []
     for i, line in enumerate(data):
-        Int, beg, end, err, name = re.split('\s+', line)
+        Int, beg, end, err, name = re.split(r'\s+', line)
         temp_join.append(end)
         temp_join.append(err)
     par_val_err.append(temp_join)
